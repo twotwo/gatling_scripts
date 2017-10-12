@@ -36,34 +36,29 @@ class Simulation_UC extends Simulation {
 
 	val httpConf = http
 		.baseURL("http://localhost:8000/api")
+		.baseURL("http://10.163.28.243/api")
 		// .disableWarmUp
 		// .disableCaching
-
-	// Now, we can write the scenario as a composition 
-	// val scn_post = scenario("Token auth by Post to Channel Server")
-	// 	.exec(FakeUC.auth)
-	// 	// .exec(session => {
-	// 	// 	// println(session)
-	// 	// 	println("code = "+ session.get("code").asOption[Int])
-	// 	// 	session
-	// 	// })
-
-	var users = 20
-	val duration = 100 //1 minute and 40 seconds
+		.acceptHeader("Content-type: application/json")
+		// .connectionHeader("keep-alive")
+		.connectionHeader("close")
+		.shareConnections
 
 	val scn_post = scenario("Token auth by Post to Channel Server")
 		.exec(FakeUC.auth)
 
+	var users = 20
+	val duration = 100 //1 minute and 40 seconds
 	val scn_post_repeat = scenario("Token auth by Post to Channel Server")
 		.during(duration) {
 			exec(FakeUC.auth).pause(5)
 		}
 
 	setUp(
-		scn_post_repeat.inject(
-			constantUsersPerSec(users) during(duration)
-			// rampUsers(5*10000) over(5) 
-			// splitUsers(50*10000) into( rampUsers(5*10000) over(5) ) separatedBy(10)
+		scn_post.inject(
+			// constantUsersPerSec(users) during(duration)
+			rampUsers(20*1) over(60) // all Users over n seconds
+			// splitUsers(10*10000) into( rampUsers(2*10000) over(5) ) separatedBy(5)
 			)
 
 		).protocols(httpConf)

@@ -7,6 +7,8 @@ Scala & Gatling Start Ups
 
 
 ## First Project
+
+### First Scala Project
 [Scala_Test_Tutorial](http://wiki.li3huo.com/Scala#Scala_Test_Tutorial)
 
     ➜  gatling_scripts git:(master) ✗ sbt new scala/scala-seed.g8 
@@ -26,6 +28,19 @@ Scala & Gatling Start Ups
     [success] Total time: 0 s, completed Sep 27, 2017 3:48:56 PM
     ...
     [success] Total time: 1 s, completed Sep 27, 2017 3:48:56 PM
+
+### First Gatling Project
+[参考](https://github.com/gatling/gatling-sbt-plugin-demo)
+
+    ➜  gatling_agent git:(master) ✗ sbt
+    [info] Loading project definition from /opt/local/ide/git_storage/github/gatling_scripts/gatling_agent/project
+    [info] Set current project to gatling_agent (in build file:/opt/local/ide/git_storage/github/gatling_scripts/gatling_agent/)
+    > gatling:testOnly Simulation_UC
+    ...
+    Simulation Simulation_UC started...
+    [info] Simulation(s) execution ended.
+    [success] Total time: 76 s, completed Oct 12, 2017 7:34:36 PM
+    > 
 
 ## Scala Basics
 [基本语法](http://twitter.github.io/scala_school/zh_cn/basics.html) Values, functions, classes, methods, inheritance, try-catch-finally. Expression-oriented programming
