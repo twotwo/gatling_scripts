@@ -42,6 +42,13 @@ Scala & Gatling Start Ups
     [success] Total time: 76 s, completed Oct 12, 2017 7:34:36 PM
     > 
 
+或者直接运行
+
+    # List all tasks
+    ➜  gatling_agent git:(master) ✗ sbt tasks gatling -v
+    # Run a single simulation
+    ➜  gatling_agent git:(master) ✗ sbt gatling:testOnly Simulation_UC
+
 ## Scala Basics
 [基本语法](http://twitter.github.io/scala_school/zh_cn/basics.html) Values, functions, classes, methods, inheritance, try-catch-finally. Expression-oriented programming
 
